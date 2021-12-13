@@ -10,6 +10,12 @@
       <%= link_to "Delete bookmark", list_path(@list),method: :delete, data: { confirm: "Are you sure?" }%>
     </section>
   <% end %>
+  <h2>Add a bookmark</h2>
+  <%= simple_form_for [@list, @bookmark] do |f| %>
+    <%= f.association :list %>
+    <%= f.association :movie %>
+    <%= f.input :comment %>
+    <%= f.submit class: "btn btn-success" %>
+  <% end %>
   <%= link_to "See all lists", lists_path %>
-  <%= link_to "Add a bookmark", new_list_bookmark_path(@list) %>
 </div>
