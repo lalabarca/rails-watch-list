@@ -12,10 +12,10 @@
 
   <body>
   <nav class="navbar navbar-light bg-light">
-    <a class="navbar-brand" href="#">
-      <img src="assets/images/video-player.png" class="d-inline-block align-top" alt="logo movieflix">
-      movieflix
-    </a>
+    <%= link_to root_path, class: "d-flex align-items-center" do %>
+      <%= cl_image_tag("video-player_ab8ine.png", alt: "logo movieflix", class: "d-inline-block align-top") %>
+      MovieFlix
+    <% end %>
   </nav>
     <%= yield %>
   </body>
