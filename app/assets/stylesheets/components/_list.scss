@@ -1,0 +1,19 @@
+
+.list-link {
+  color: white;
+  &:hover {
+    color: white;
+  }
+  article {
+  padding: 1.4rem;
+  background-position: center;
+  background-size: cover;
+  box-shadow: 0 1px 10px rgba($color: #000000, $alpha: 0.3);
+  position: relative;
+  height: 140px;
+  border-radius: 8px;
+    h2 {
+      font-size: 1.3rem;
+    }
+  }
+}

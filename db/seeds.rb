@@ -16,7 +16,7 @@ Movie.destroy_all
 url = 'http://tmdb.lewagon.com/movie/top_rated'
 user_serialized = URI.open(url).read
 datas = JSON.parse(user_serialized)
-results = datas["results"].first(10)
+results = datas["results"].first(15)
 puts "Creating movies..."
 
 results.each do |movie|
