@@ -1,23 +1,44 @@
-
-
-<div class="container">
-  <h1><%= @list.name %></h1>
-  <% @list.bookmarks.each do |bookmark| %>
-    <section>
-    <%@list.movies.each do |movie| %>
-      <h2><%= movie.title %></h2>
-      <p><%= movie.overview %></p>
-    <% end %>
-      <p><%= bookmark.comment %></p>
-      <%= link_to "Delete bookmark", list_path(@list),method: :delete, data: { confirm: "Are you sure?" }%>
-    </section>
-  <% end %>
-  <h2>Add a bookmark</h2>
-  <%= simple_form_for [@list, @bookmark] do |f| %>
-    <%= f.association :list %>
-    <%= f.association :movie %>
-    <%= f.input :comment %>
-    <%= f.submit class: "btn btn-success" %>
-  <% end %>
-  <%= link_to "See all lists", lists_path %>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= @list.image_url %>);">
+  <div class="container">
+    <h1><%= @list.name %></h1>
+    <p>All bookmarks of your <%= @list.name.downcase %> list</p>
+    <%= link_to "See all lists", root_path, class:"btn btn-primary"%>
+  </div>
 </div>
+
+<main>
+ <% unless (@list.movies.empty?) %>
+  <div class="container">
+    <section class="row py-5">
+      <%@list.movies.each do |movie| %>
+        <div class="col-12 col-md-6">
+          <article>
+            <h2><%= movie.title %></h2>
+            <p><%= movie.overview %></p>
+            <% movie.bookmarks.each do |bookmark| %>
+            <p><%= bookmark.comment %></p>
+            <%= link_to bookmark_path(bookmark),method: :delete, data: { confirm: "Are you sure?" } do %>
+              <i class="far fa-trash-alt"></i> Delete bookmark
+            <% end %>
+            <% end %>
+          </article>
+        </div>
+      <% end %>
+    </section>
+  </div>
+<% end %>
+
+ <section class="row justify-content-center bg-light py-5">
+    <div class="container">
+      <div class="col-12 col-lg-6">
+        <h2>Add a bookmark</h2>
+        <%= simple_form_for [@list, @bookmark] do |f| %>
+          <%= f.association :list %>
+          <%= f.association :movie %>
+          <%= f.input :comment %>
+          <%= f.submit class: "btn btn-success text-white" %>
+        <% end %>
+      </div>
+    </div>
+ </section>
+</main>
