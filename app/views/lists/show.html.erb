@@ -1,4 +1,8 @@
+<% unless  @list.image_url.empty?  %>
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= @list.image_url %>);">
+<% else %>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= cl_image_path @list.photo.key %>);">
+<% end %>
   <div class="container">
     <h1><%= @list.name %></h1>
     <p>All bookmarks of your <%= @list.name.downcase %> list</p>
@@ -11,15 +15,21 @@
   <div class="container">
     <section class="row py-5">
       <%@list.movies.each do |movie| %>
-        <div class="col-12 col-md-6">
+        <div class="col-12 col-md-6 d-flex">
+          <figure class="poster-list">
+            <%= image_tag movie.poster_url, alt: "poster movie" %>
+          </figure>
           <article>
             <h2><%= movie.title %></h2>
-            <p><%= movie.overview %></p>
+            <p><%= movie.overview.truncate(200) %></p>
             <% movie.bookmarks.each do |bookmark| %>
-            <p><%= bookmark.comment %></p>
-            <%= link_to bookmark_path(bookmark),method: :delete, data: { confirm: "Are you sure?" } do %>
-              <i class="far fa-trash-alt"></i> Delete bookmark
-            <% end %>
+              <p><i class="fas fa-quote-left"></i> <%= bookmark.comment %></p>
+              <div class="footer-bookmark d-flex justify-content-between align-items-center">
+                <strong><%= movie.rating %> <i class="fas fa-star"></i></strong>
+                <%= link_to bookmark_path(bookmark), class: "btn btn-danger", method: :delete, data: { confirm: "Are you sure?" } do %>
+                  <i class="far fa-trash-alt"></i>
+                <% end %>
+              </div>
             <% end %>
           </article>
         </div>

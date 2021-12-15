@@ -7,16 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
   </head>
 
   <body>
-  <nav class="navbar navbar-light bg-light">
-    <%= link_to root_path, class: "d-flex align-items-center" do %>
-      <%= cl_image_tag("video-player_ab8ine.png", alt: "logo movieflix", class: "d-inline-block align-top") %>
-      MovieFlix
-    <% end %>
-  </nav>
+    <%= render "shared/navbar" %>
     <%= yield %>
   </body>
 </html>

@@ -1,0 +1,35 @@
+.poster-list {
+  width: 130px;
+  height: 130px;
+  position: absolute;
+  z-index: 1;
+  box-shadow: 0 0 8px rgba($color: #000000, $alpha: 0.2);
+  border-radius: $my-border-rad;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.poster-list + article {
+  position: relative;
+  margin-left: 80px;
+  padding: 1.5rem 1.8rem 1.5rem 4.6rem;
+  box-shadow: 0 0 8px rgba($color: #000000, $alpha: 0.2);
+  border-radius: $my-border-rad;
+  margin-top: 40px;
+
+  h2 {
+    margin-bottom: 0.7rem;
+  }
+}
+
+.footer-bookmark strong {
+  font-size: 1.2rem;
+   i {
+    color: $yellow;
+   }
+}
