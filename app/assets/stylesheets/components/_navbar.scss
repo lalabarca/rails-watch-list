@@ -1,22 +1,39 @@
 .navbar-lewagon {
-  background-color: transparent;
   transition: 0.5s background-color ease;
-  padding: 1.1rem 0;
+  padding: 1.1rem 2rem;
+  z-index: 1000;
+  width: 100%;
 
   .logo-link {
-    color: white;
+    color: #0E0000;
     font-family: $headers-font;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     font-weight: 700;
     letter-spacing: 1px;
+    display: flex;
+    align-items: flex-end;
    img {
-    width: 50px;
+    width:50px;
     margin-right: 1rem;
    }
   }
+
+}
+
+.navbar-transparent {
+  background-color: transparent;
+  position: fixed;
 }
 
 .navbar-lewagon-white {
   background-color: white;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: white;
+}
+
+.navbar-collapse {
+  flex-grow: 0;
 }

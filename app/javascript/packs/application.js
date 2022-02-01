@@ -15,9 +15,11 @@ import 'bootstrap';
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
-import { initUpdateNavbarOnScroll } from '../components/navbar';
+import { initUpdateNavbarOnScroll, navbarOnHomepage } from '../components/navbar';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your JS functions here
   initUpdateNavbarOnScroll();
+  navbarOnHomepage();
+
 });

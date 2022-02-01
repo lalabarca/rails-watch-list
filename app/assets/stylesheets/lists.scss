@@ -3,8 +3,20 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 a {
   transition: all 0.5s;
+  text-decoration: none;
 
   &:hover {
     text-decoration: none;
   }
+}
+
+.btn-primary, .btn-warning, .btn-danger {
+  color: #fff;
+  &:hover {
+    color: #fff;
+  }
+}
+
+.form-group {
+  margin-bottom: 1rem;
 }

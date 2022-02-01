@@ -10,36 +10,40 @@
   </div>
 </div>
 
-<main>
- <% unless (@list.movies.empty?) %>
-  <div class="container">
-    <section class="row py-5">
-      <%@list.movies.each do |movie| %>
-        <div class="col-12 col-md-6 d-flex mb-4">
-          <figure class="poster-list">
-            <%= image_tag movie.poster_url, alt: "poster movie" %>
-          </figure>
-          <article>
-            <h2><%= movie.title %></h2>
-            <p><%= movie.overview.truncate(200) %></p>
-            <% movie.bookmarks.each do |bookmark| %>
-              <p><i class="fas fa-quote-left"></i> <%= bookmark.comment %></p>
-              <div class="footer-bookmark d-flex justify-content-between align-items-center">
-                <strong><%= movie.rating %> <i class="fas fa-star"></i></strong>
-                <%= link_to bookmark_path(bookmark), class: "btn btn-danger", method: :delete, data: { confirm: "Are you sure?" } do %>
-                  <i class="far fa-trash-alt"></i>
-                <% end %>
-              </div>
-            <% end %>
-          </article>
-        </div>
-      <% end %>
-    </section>
-  </div>
-<% end %>
-
- <section class="row justify-content-center bg-light py-5">
+<section>
+  <% unless (@list.movies.empty?) %>
     <div class="container">
+      <div class="row py-5">
+        <%@list.movies.each do |movie| %>
+          <div class="col-12 col-md-6 d-flex mb-4">
+            <figure class="poster-list">
+              <%= image_tag movie.poster_url, alt: "poster movie" %>
+            </figure>
+            <article>
+              <h2><%= movie.title %></h2>
+              <p><%= movie.overview.truncate(200) %></p>
+              <% movie.bookmarks.each do |bookmark| %>
+                <p><i class="fas fa-quote-left"></i> <%= bookmark.comment %></p>
+                <div class="footer-bookmark d-flex justify-content-between align-items-center">
+                  <strong><%= movie.rating %> <i class="fas fa-star"></i></strong>
+                  <% if policy(bookmark).destroy? %>
+                    <%= link_to bookmark_path(bookmark), class: "btn btn-danger", method: :delete, data: { confirm: "Are you sure?" } do %>
+                      <i class="far fa-trash-alt"></i>
+                    <% end %>
+                  <% end %>
+                </div>
+              <% end %>
+            </article>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</section>
+
+<section class="bg-light py-5">
+  <div class="container">
+    <div class="row justify-content-center">
       <div class="col-12 col-lg-6">
         <h2>Add a bookmark</h2>
         <%= simple_form_for [@list, @bookmark] do |f| %>
@@ -50,5 +54,5 @@
         <% end %>
       </div>
     </div>
- </section>
-</main>
+  </div>
+</section>

@@ -5,8 +5,10 @@
         <%= simple_form_for @list do |f| %>
           <%= f.input :name %>
           <%= f.input :image_url %>
-          <%= f.input :photo, as: :file %>
-          <%= f.submit class: "btn btn-success text-white" %>
+          <%= f.input :photo, as: :file, label_html: {
+            class: "me-3 "
+          } %>
+          <%= f.submit class: "btn btn-success text-white mt-4" %>
         <% end %>
         <%= link_to "← See all lists", root_path, class:"btn btn-warning mt-4" %>
     </div>

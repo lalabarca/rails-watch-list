@@ -11,6 +11,7 @@ class BookmarksController < ApplicationController
     @movie = Movie.find(params[:bookmark][:movie_id])
     @bookmark.list = @list
     @bookmark.movie = @movie
+    authorize @bookmark
     if @bookmark.save
       redirect_to list_path(@list)
     else
@@ -20,6 +21,7 @@ class BookmarksController < ApplicationController
 
   def destroy
     @bookmark = Bookmark.find(params[:id])
+    authorize @bookmark
     @bookmark.destroy
     redirect_to list_path(@bookmark.list)
   end
