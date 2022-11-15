@@ -13,6 +13,9 @@
   </div>
 
   <main class="row">
+    <% if @lists.empty? %>
+      <p>Vous n'avez pas encore créé de listes.</p>
+    <% end %>
     <% @lists.each do |list| %>
       <div class="col-6 col-lg-4">
         <%= link_to list_path(list), class:"list-link" do %>
