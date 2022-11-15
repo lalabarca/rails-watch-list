@@ -3,7 +3,7 @@ services:
     type: web
     env: ruby
     buildCommand: bin/render-build.sh
-    startCommand: bundle exec puma -C config/puma.rb
+    startCommand: bundle exec rails s
     envVars:
       - key: SECRET_KEY_BASE
         generateValue: true
